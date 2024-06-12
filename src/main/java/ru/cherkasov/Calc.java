@@ -18,20 +18,34 @@ public class Calc {
         String result;
         boolean isRoman;
         String[] operands = expression.split("[+\\-*/]");
+        String[] str1 = operands[0].split("\\s+");
+        String oper1 = "";
+        for (String s : str1) {
+            if (!s.isEmpty()) {
+                oper1 = s;
+            }
+        }
+        String[] str2 = operands[1].split("\\s+");
+        String oper2 = "";
+        for (String s : str2) {
+            if (!s.isEmpty()) {
+                oper2 = s;
+            }
+        }
         if (operands.length != 2) throw new Exception("Должно быть два операнда");
         operation = detectOperation(expression);
         if (operation == null) throw new Exception("Неподдерживаемая математическая операция");
         //Если оба числа римские:
-        if (Roman.isRoman(operands[0]) && Roman.isRoman(operands[1])) {
+        if (Roman.isRoman(oper1) && Roman.isRoman(oper2)) {
             //Конвертируем оба числа в арабские для вычисления действия
-            num1 = Roman.convertToArabian(operands[0]);
-            num2 = Roman.convertToArabian(operands[1]);
+            num1 = Roman.convertToArabian(oper1);
+            num2 = Roman.convertToArabian(oper2);
             isRoman = true;
         }
         //Если оба числа арабские:
-        else if (!Roman.isRoman(operands[0]) && !Roman.isRoman(operands[1])) {
-            num1 = Integer.parseInt(operands[0]);
-            num2 = Integer.parseInt(operands[1]);
+        else if (!Roman.isRoman(oper1) && !Roman.isRoman(oper2)) {
+            num1 = Integer.parseInt(oper1);
+            num2 = Integer.parseInt(oper2);
             isRoman = false;
         }
         //Если одно число римское, а другое - арабское:

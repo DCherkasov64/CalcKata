@@ -24,14 +24,14 @@ public class Roman {
     public static int convertToArabian(String roman) {
         for (int i = 0; i < romanArray.length; i++) {
             if (roman.equals(romanArray[i])) {
-                return i;
+                return i + 1;
             }
         }
         return -1;
     }
 
     public static String convertToRoman(int arabian) {
-        return romanArray[arabian];
+        return romanArray[arabian - 1];
     }
 
 }
