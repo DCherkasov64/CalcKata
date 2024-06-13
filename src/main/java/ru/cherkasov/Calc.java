@@ -52,7 +52,11 @@ public class Calc {
         else {
             throw new Exception("Числа должны быть одного формата (римские или арабские)");
         }
+        //Если одно из чисел больше 10 или меньше 1:
         if (num1 > 10 || num2 > 10) {
+            throw new Exception("Числа должны быть от 1 до 10");
+        }
+        if (num1 < 1 || num2 < 1) {
             throw new Exception("Числа должны быть от 1 до 10");
         }
         int arabian = calc(num1, num2, operation);
